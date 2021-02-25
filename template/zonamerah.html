@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Indonesia Darurat Covid</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/774188066562637824/807604760894636052/91179258_1059116257820969_2212853170504204288_n.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <h3 align="center">Data Penyebaran Covid-19</h3>
+        <h3 align="center"> Negara Indonesia</h3>
+        <br>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Profil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/covid">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sorted">Sorted</a>
+            </li>
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                          Zona Merah
+                                        </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/filter">Zona Hijau</a>
+                        <a class="dropdown-item" href="/zonamerah">Zona Merah</a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="home" class="container tab-pane active"><br>
+
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr align="center">
+                            <th scope="col" class="text-white">Provinsi</th>
+                            <th scope="col" class="text-white">Positif</th>
+                            <th scope="col" class="text-white">Sembuh</th>
+                            <th scope="col" class="text-white">Meninggal</th>
+                            <th scope="col" class="text-white">Persentase Sembuh</th>
+                            <th scope="col" class="text-white">Persentase Meninggal</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr class="row100 body"></tr>
+                        <tr>
+                            {%for row in range(34)%}
+                            <tr>
+                                <div class="row">
+
+                                    {% for cell in range(1)%} {% if covid[row].positif > 10000%}
+                                    <th scope="row">{{covid[row].provinsi}}</th>
+                                    <td align="center">{{covid[row].positif}}</td>
+                                    <td align="center">{{covid[row].sembuh}}</td>
+                                    <td align="center">{{covid[row].meninggal}}</td>
+                                    <td align="center">{{covid[row].persensembuh}}</td>
+                                    <td align="center">{{covid[row].persenmeninggal}}</td>
+                                    {% endif %} {% endfor %}
+                            </tr>
+                            {% endfor%}
+                            </a>
+                </table>
+                </div>
+            </div>
+        <div class="container">                  
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="/sorted">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="/">1</a></li>
+                <li class="page-item"><a class="page-link" href="/sorted">2</a></li>
+                <li class="page-item"><a class="page-link" href="/zonamerah">3</a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
